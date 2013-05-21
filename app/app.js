@@ -31,21 +31,3 @@ Ext.application({
 */
 
 
-Ext.onReady(function() { 
-    if(Ext.BLANK_IMAGE_URL.substr(0,4) != "data")
-    {
-        Ext.BLANK_IMAGE_URL="./mages/s.gif"
-    }
-
-    // create view port
-    Ext.create('Ext.Viewport', {
-        layout:'fit'
-      , items: [
-            {
-              xtype:"panel"
-            , title: "hi"
-            , html: "<h1>yo</h1>"
-            }
-        ]
-    });
-});
