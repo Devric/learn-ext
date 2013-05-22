@@ -12,5 +12,50 @@
         <script src="app/app.js"></script>
     <!-- </x-compile> -->
 </head>
-<body></body>
+<body>
+
+<input id="input1" value="" type="text"/>
+    <div id="numList"></div>
+
+<style type="text/css">
+    #numList span {
+        height:20px;
+        width:100px;
+        display: block;
+    }
+</style>
+<script type="text/javascript">
+    html="";
+    for(var i =0; i<50; i++)
+    {
+        html+="<span>"+ Math.floor(Math.random()*10000) +"</span>";
+    }
+    var el=Ext.getDom("numList");
+    el.innerHTML=html;
+
+    var task = new Ext.util.DelayedTask(function(){
+        var els=Ext.getDom("numList").childNodes;
+        var value=parseInt(Ext.getDom("input1").value);
+        for (var i=els.length-1; i >=0 ; i--)
+        {
+            var v = parseInt(els[i].innerHTML)
+
+            if (v<value)
+            {
+                els[i].style.display="none";
+            }
+            else
+            {
+                els[i].style.display="block";
+            }
+        }
+    });
+
+    Ext.EventManager.on("input1", "keypress", function(e,el){
+       var key= e.getKey();
+        if(key< e.ZERO || key > e.NINE) e.stopEvent();
+        task.delay(1000);
+    });
+</script>
+</body>
 </html>
