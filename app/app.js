@@ -32,20 +32,61 @@ Ext.application({
 
 
 Ext.onReady(function() { 
-    if(Ext.BLANK_IMAGE_URL.substr(0,4) != "data")
-    {
-        Ext.BLANK_IMAGE_URL="./mages/s.gif"
+    var input   = Ext.getDom("input1")
+      , div     = Ext.getDom("div1")
+      , button  = Ext.getDom("stopButton")
+    ;
+
+    var task = {
+        run: function(count) {
+            var v = parseInt(input.value)
+                , d = v-count
+            ;
+
+            if (v>count)
+            {
+                div.innerHTML = v-count;
+            }
+            else
+            {
+                input.removeAttribute("readonly");
+                div.style.display="none";
+                button.value="start";
+                Ext.Msg.alert({title:"Yoyo bar",msg:"Time up!"});
+            }
+        }
+
+        , interval : 1000
+        , duration : 1000
     }
 
-    // create view port
-    Ext.create('Ext.Viewport', {
-        layout:'fit'
-      , items: [
-            {
-              xtype:"panel"
-            , title: "hi"
-            , html: "<h1>yo</h1>"
-            }
-        ]
+    Ext.EventManager.on("input1", "keypress", function(e,el){
+        var key= e.getKey();
+        if (key< e.ZERO || key> e.NINE) e.stopEvent();
     });
+
+    Ext.EventManager.on("stopButton", "click", function(e,el){
+        var t=task;
+        if (el.value=="stop")
+        {
+            el.value="start";
+            input.removeAttribute("readonly");
+            div.style.display="none";
+            Ext.TaskManager.stop(task);
+        }
+        else
+        {
+            var v=parseInt(input.value);
+            if(v>0)
+            {
+                t.duration=v*1000;
+                input.readOnly="true";
+                div.innerHTML=v;
+                div.style.display="block";
+                el.value="stop";
+                Ext.TaskManager.start(task);
+            }
+        }
+    });
+
 });
