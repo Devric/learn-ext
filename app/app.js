@@ -30,22 +30,43 @@ Ext.application({
 });
 */
 
+Ext.require('Ext.util.KeyMap');
 
+/**
+ * Hit enter, again and again, see it jumps to the next input box
+ */
 Ext.onReady(function() { 
-    if(Ext.BLANK_IMAGE_URL.substr(0,4) != "data")
-    {
-        Ext.BLANK_IMAGE_URL="./mages/s.gif"
-    }
 
-    // create view port
-    Ext.create('Ext.Viewport', {
-        layout:'fit'
-      , items: [
-            {
-              xtype:"panel"
-            , title: "hi"
-            , html: "<h1>yo</h1>"
+    var els = Ext.query('#form1 input, textarea');
+    Ext.create("Ext.util.KeyMap", "form1", {
+        key:13
+      , fn:function(key,e) {
+
+            var el= e.target
+              , target=els
+              , ln=target.length
+              , i = 0
+            ;
+
+            // find the current and next input/text field
+            // focus depend on if it is the last field
+            for ( ; i<ln;i++ ) {
+
+                if (target[i]==el)
+                {
+                    if (i+1==ln)
+                    {
+                        target[0].focus();
+                    }
+                    else
+                    {
+                        target[i+1].focus();
+                    }
+                }
             }
-        ]
+        }
+
+      , scope: Ext.getDom("form1")
     });
+
 });
