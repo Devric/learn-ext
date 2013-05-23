@@ -6,11 +6,66 @@
     <!-- <x-compile> -->
         <!-- <x-bootstrap> -->
             <link rel="stylesheet" href="bootstrap.css">
-            <script src="ext/ext-dev.js"></script>
+            <script src="ext/ext-all-dev.js"></script>
             <script src="bootstrap.js"></script>
         <!-- </x-bootstrap> -->
         <script src="app/app.js"></script>
     <!-- </x-compile> -->
+    <style type="text/css">
+
+        .box {
+            display: block;
+            background: black;
+            color: white;
+            margin: 2px 2px 0 0;
+            font-size: 1.4em;
+        }
+
+        .small {
+            width: 50px;
+            height: 50px;
+        }
+
+        #large {
+            width: 154px;
+            height: 154px;
+        }
+
+        span {
+            display: block;
+            float:left;
+        }
+        .select {
+            border: 2px
+        }
+    </style>
 </head>
-<body></body>
+<body>
+
+    <p>
+        use tabIndex="1"
+    </p>
+
+    <p>
+        so that you can tab focus on #div1,
+        once focused, you can start navigating
+    </p>
+
+    <p>
+        IF no tabIndex is defined to element
+
+        you will need to use Ext.getDoc, to return document element in order to bind event
+    </p>
+
+    <div tabIndex="1" id="div1">
+        <span>
+            <div class="box small select">1</div>
+            <div class="box small">2</div>
+            <div class="box small">3</div>
+        </span>
+        <span>
+            <div class="box" id="large">1</div>
+        </span>
+    </div>
+</body>
 </html>

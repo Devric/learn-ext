@@ -30,22 +30,44 @@ Ext.application({
 });
 */
 
+Ext.require('Ext.util.KeyNav');
 
 Ext.onReady(function() { 
-    if(Ext.BLANK_IMAGE_URL.substr(0,4) != "data")
-    {
-        Ext.BLANK_IMAGE_URL="./mages/s.gif"
+    var els = Ext.select('.small')
+        , big = Ext.getDom('large')
+        , index=0
+    ;
+
+    var fn = function fn(v) {
+        var ell = els
+            , text = ell.item(index).dom.innerHTML
+        ;
+
+        ell.item(index).removeCls('select');
+
+        index=index+v;
+        if (index<0)
+        {
+            index=2;
+        }
+        else if (index>2)
+        {
+            index=0
+        };
+
+        var el=ell.item(index);
+        el.radioCls("select");
+
+        big.innerHTML = text;
     }
 
-    // create view port
-    Ext.create('Ext.Viewport', {
-        layout:'fit'
-      , items: [
-            {
-              xtype:"panel"
-            , title: "hi"
-            , html: "<h1>yo</h1>"
-            }
-        ]
+    Ext.create("Ext.util.KeyNav", "div1", {
+       up: function() {
+            fn(-1)
+       }
+     , down: function(){
+            fn(1)
+       }
+     , scope: this
     });
 });
