@@ -1,6 +1,6 @@
-Ext.define("My.HKStock", {
-    requires : ['Ext.util.create']
-    , selectIndex: 0
+Ext.define("app.HKStock", {
+    //requires : ['Ext.util.create']
+    selectIndex: 0
     , activeIndex: 0
     , url : 'http://hq.sinajs.cn/?_dc='
     , imgurl : 'http://image.sinajs.cn/newchart/hk_stock'
