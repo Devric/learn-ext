@@ -40,7 +40,7 @@
 
         log(Ext.query("tr:has(input)"))
 
-        log(Ext.query("tr:range(1-2)"))
+        // log(Ext.query("tr:range(1-2)"))
 
     });
 })()
