@@ -50,5 +50,19 @@
         // fly gets element without storing data into cache
         Ext.fly('two').dom.innerHTML = '<br /> ext content lah, i flyied this content lah'
 
+        var el = Ext.query("tr:nth(2)")[0]
+            , dh = Ext.DomHelper;
+        ;
+
+        dh.insertHtml('beforebegin', el, dh.markup({
+            tag: 'tr',
+            cn: [
+                { tag: 'td', cls: 'check' , cn : [
+                    { tag: 'input', type: 'checkbox', name: 'articleId', value : '8' }
+                ]},
+                { tag: 'td', cls: 'title', html: 'added with dom helper'}
+            ]
+        }));
+
     });
 })()
