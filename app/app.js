@@ -34,13 +34,21 @@
         log(Ext.query("tr:last"))
 
         // contains innerhtml of two
-        log(Ext.query("td:contains(two)"))
+        log(Ext.query("td:contains(three)"))
 
         log(Ext.query("div:not(one)"))
 
         log(Ext.query("tr:has(input)"))
 
-        // log(Ext.query("tr:range(1-2)"))
+        //log(Ext.query("tr:range(1-2)"))
+        
+        // get single element
+
+        // get() gets element and stores its data into the cache
+        Ext.get('one').dom.innerHTML = '<br /> ext content lah, i added this line with Ext.get()'
+        
+        // fly gets element without storing data into cache
+        Ext.fly('two').dom.innerHTML = '<br /> ext content lah, i flyied this content lah'
 
     });
 })()
