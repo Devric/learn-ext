@@ -6,11 +6,82 @@
     <!-- <x-compile> -->
         <!-- <x-bootstrap> -->
             <link rel="stylesheet" href="bootstrap.css">
-            <script src="ext/ext-dev.js"></script>
+            <script src="ext/ext-all-dev.js"></script>
             <script src="bootstrap.js"></script>
         <!-- </x-bootstrap> -->
         <script src="app/app.js"></script>
     <!-- </x-compile> -->
+
+    <style type="text/css">
+        .accordion {
+            width: 300px;
+            border: 1px solid black;
+        }
+
+        .accordion div {
+            background-color: #eee;
+        }
+
+        .accordion p {
+            margin-bottom: 10px;
+            border: none;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 10pxmargin: 0px;
+            padding: 10px;
+        }
+
+        .titlebar {
+            cursor: pointer;
+            display: block;
+            padding: 5px;
+            margin-top: 0;
+
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 12px;
+            color: black;
+
+            background-color: #00a0c6;
+            border-top: 1px soid #ffffff;
+            border-bottom: 1px solid #999;
+        }
+
+        .titlebar .selected {
+            color: black;
+            background-color: #80cfe2;
+        }
+
+        .titlebar:hover {
+            background-color: white;
+        }
+    </style>
 </head>
-<body></body>
+<body>
+    <h1>accodion man</h1>
+
+    <div id="MyAccodion" class="accordion">
+        <a class="titlebar">user</a>
+        <div><p>
+            <a href="#">joe</a>
+            <a href="#">moe</a>
+        </p></div>
+        <a class="titlebar">purchase</a>
+        <div><p>
+            <a href="#">in</a>
+            <a href="#">stock</a>
+        </p></div>
+        <a class="titlebar">report</a>
+        <div><p>
+            <a href="#">month</a>
+            <a href="#">season</a>
+            <a href="#">yearly</a>
+        </p></div>
+        <a class="titlebar">management</a>
+        <div><p>
+            <a href="#">user</a>
+            <a href="#">system</a>
+        </p></div>
+    </div>
+</body>
 </html>
