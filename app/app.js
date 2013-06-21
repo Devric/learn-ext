@@ -51,7 +51,9 @@
         Ext.fly('two').dom.innerHTML = '<br /> ext content lah, i flyied this content lah'
 
         var el = Ext.query("tr:nth(2)")[0]
-            , dh = Ext.DomHelper;
+            , dh = Ext.DomHelper
+            , dh2 = Ext.dom.Helper
+            , el2 = Ext.query('table')[0]
         ;
 
         dh.insertHtml('beforebegin', el, dh.markup({
@@ -63,6 +65,16 @@
                 { tag: 'td', cls: 'title', html: 'added with dom helper'}
             ]
         }));
+
+        dh2.append(el2, {
+            tag: 'tr',
+            cn: [
+                { tag: 'td', cls: 'check' , cn : [
+                    { tag: 'input', type: 'checkbox', name: 'articleId', value : '8' }
+                ]},
+                { tag: 'td', cls: 'title', html: 'added with dom helper'}
+            ]
+        });
 
     });
 })()
